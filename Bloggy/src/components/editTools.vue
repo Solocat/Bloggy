@@ -2,18 +2,12 @@
     <ul :style="styleOb">
         <li v-for="tool in visibleTools" v-if="tool.show" :key="tool.text">
             <span class="tooltip">{{tool.text}}</span>
-            <img :src="tool.icon" class="icon" @click="useTool(tool)">
+            <img :src="require(`@/assets/svg/${tool.icon}`)" class="icon" @click="useTool(tool)">
         </li>
     </ul>
 </template>
 
 <script>
-    import up from '@/assets/svg/angle-up.svg'
-    import edit from '@/assets/svg/edit.svg'
-    import check from '@/assets/svg/check.svg'
-    import wrench from '@/assets/svg/wrench.svg'
-    import trash from '@/assets/svg/trash-alt.svg'
-    import down from '@/assets/svg/angle-down.svg'
     export default {
         props: ["visible", "editing", "hiddenTools", "topOffset"],
         computed: {
@@ -40,34 +34,34 @@
             return {
                 tools: [
                     {
-                        icon: up,
+                        icon: "angle-up.svg",
                         text: "move up",
                         show: true
                     },
                     {
-                        icon: edit,
+                        icon: "edit.svg",
                         text: "edit",
                         show: true,
                         filter: function () { return !this.editing; }
                     },
                     {
-                        icon: check,
+                        icon: "check.svg",
                         text: "save",
                         show: true,
                         filter: function () { return this.editing; }
                     },
                     {
-                        icon: wrench,
+                        icon: "wrench.svg",
                         text: "change",
                         show: false
                     },
                     {
-                        icon: trash,
+                        icon: "trash-alt.svg",
                         text: "delete",
                         show: true
                     },
                     {
-                        icon: down,
+                        icon: "angle-down.svg",
                         text: "move down",
                         show: true
                     },

@@ -2,7 +2,7 @@
     <div id="addTools">
         <ul>
             <li v-for="tool in addTools" @mouseover="hover(tool.text)" @click="useTool(tool)" :key="tool.text">
-                <img :src="tool.icon" class="icon">
+                <img :src="require(`@/assets/svg/${tool.icon}`)" class="icon">
             </li>
         </ul>
         <span class="tooltip">{{addTooltip}}</span>
@@ -10,10 +10,7 @@
 </template>
 
 <script>
-    import heading from '@/assets/svg/heading.svg'
-    import paragraph from '@/assets/svg/paragraph.svg'
-    import image from '@/assets/svg/image.svg'
-    import quote from '@/assets/svg/quote-right.svg'
+
     export default {
         methods: {
             hover(text) {
@@ -28,22 +25,22 @@
                 addTooltip: "tooltip",
                 addTools: [
                     {
-                        icon: heading,
+                        icon: "heading.svg",
                         text: "Add heading",
                         type: "h3"
                     },
                     {
-                        icon: paragraph,
+                        icon: "paragraph.svg",
                         text: "Add paragraph",
                         type: "p"
                     },
                     {
-                        icon: image,
+                        icon: "image.svg",
                         text: "Add image",
                         type: "img"
                     },
                     {
-                        icon: quote,
+                        icon: "quote-right.svg",
                         text: "Add block quote",
                         type: "blockquote"
                     }

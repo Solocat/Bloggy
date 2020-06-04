@@ -1,6 +1,6 @@
 <template>
     <div class="image" @click="onClick">
-        <img :src="this.item.content" />
+        <img :src="require(`@/assets/${item.content}`)" />
         <input v-show="this.editing" type="file" accept="image/*" @input="onInput" />
     </div>
 </template>
