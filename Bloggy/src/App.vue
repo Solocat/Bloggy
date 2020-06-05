@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <router-link to="/"> Post List </router-link>
-        <router-view></router-view>
+        <router-view :key="$route.path"></router-view>
     </div>
 </template>
 

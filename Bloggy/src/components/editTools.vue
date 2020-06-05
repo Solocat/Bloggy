@@ -73,7 +73,6 @@
 
 <style scoped>
     ul {
-        /*visibility: hidden;*/
         position: relative;
         display: inline-block;
         margin-right: 1em;

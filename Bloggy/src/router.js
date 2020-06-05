@@ -15,6 +15,6 @@ export default new Router({
         { path: '/post/new', component: sEditor, name: 'new', props: { postdata: { blocks: [] } } },
         { path: '/404', alias: '*', component: NotFound }
     ],
-    //mode: 'history',
+    mode: 'history',
     base: '/'
 })
