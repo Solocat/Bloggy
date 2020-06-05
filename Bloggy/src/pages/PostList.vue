@@ -2,13 +2,13 @@
     <div>
         <router-link class="button" :to="{ name: 'new'}">New post</router-link>
         <ul>
-            <li v-for="(post, index) in posts" :key="index">
+            <li v-for="(post, index) in store.posts" :key="index">
                 <article>
                     <img src="https://placeimg.com/400/300/any">
                     <h2>{{ post.title }}</h2>
                     <aside> {{ post.blocks[1].content }} </aside>
                     <div class="scrim"></div>
-                    <router-link class="button" :to="{name: 'post', params: { postid:index, postdata: post } }">Read more</router-link>
+                    <router-link class="button" :to="{name: 'post', params: { postid:index } }">Read more</router-link>
                 </article>
             </li>
         </ul>
@@ -16,18 +16,20 @@
 </template>
 
 <script>
-    import firebase from '@/firebase.js'
+    //import firebase from '@/firebase.js'
+    import store from '@/store.js'
 
     export default {
         //name: 'Home',
         data: function () {
             return {
-                posts: []
+                store: store
             }
         },
         async created() {
-            var postRef = firebase.database().ref("posts");
-            this.posts = (await postRef.once('value')).val();
+            await store.getPosts();
+            //var postRef = firebase.database().ref("posts");
+            //this.posts = (await postRef.once('value')).val();
         }
     };
 </script>

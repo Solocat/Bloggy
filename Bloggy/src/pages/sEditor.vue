@@ -23,7 +23,8 @@
     import sArticle from './sArticle'
     import editTools from '@/components/editTools'
     import addTools from '@/components/addTools'
-    import firebase from '@/firebase.js'
+    import store from '@/store'
+
     export default {
         mixins: [sArticle], //inherit from article
         methods: {
@@ -37,25 +38,14 @@
 
                 return excluded;
             },
-            upload() {
+            async upload() {
                 this.unselect();
-                var postRef = null;
-                if (this.$route.params.postid) {
-                    postRef = firebase.database().ref("posts/").child(this.$route.params.postid);
-                }
-                else {
-                    postRef = firebase.database().ref("posts/").push();
-                }
+
                 this.post.title = this.post.blocks[0].content;
                 this.post.time = Date.now();
                 this.post.author = "me";
-                postRef.set(this.post, function (error) {
-                    if (error) {
-                        // The write failed...
-                    } else {
-                        //console.log("Post saved!");
-                    }
-                });
+
+                await store.uploadPost(this.post, this.$route.params.postId);
             },
             clear() {
                 this.unselect();

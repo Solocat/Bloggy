@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <router-link to="/"> Post List </router-link>
+        <router-link to="/">Post List</router-link>
         <router-view :key="$route.path"></router-view>
     </div>
 </template>
