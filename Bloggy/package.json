@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@firebase/database": "^0.6.3",
-    "firebase": "^7.14.6",
+    "firebase": "^10.9.0",
     "vue": "2.5.17",
     "vue-router": "^3.3.2"
   },
